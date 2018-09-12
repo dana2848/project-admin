@@ -1,0 +1,26 @@
+<h1>Users#new</h1>
+<% if @user.errors.any? %>
+<div id="error_explanation">
+   <h2><%= pluralize(@course.errors.count, "error") %> prohibited
+     new account from being saved:</h2>
+     <ul>
+       <% @user.errors.full_messages.each do |msg| %>
+         <li><%= msg %></li>
+       <% end %>
+       </ul>
+     </div>
+   <% end %>
+
+<p>Find me in app/views/users/new.html.erb</p>
+  <%= form_for @user do |form| %>
+  <%= form.label :name  %>
+  <%= form.text_field :name %> <br>
+    <%= form.label :email  %>
+    <%= form.text_field :email %> <br>
+    <%= form.label :password %>
+    <%= form.password_field :password %> <br>
+    <%= form.label :password_confirmation %>
+    <%= form.password_field :password_confirmation %> <br>
+    <%= form.submit "sign up"%>
+
+<% end %>

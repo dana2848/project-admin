@@ -1,0 +1,27 @@
+<h1>Instructor#index</h1>
+<%= link_to 'add new instructor', new_instructor_path %>
+<table>
+<tr>
+  <th>first name</th>
+  <th>last name</th>
+  <th>age</th>
+  <th>education</th>
+
+</tr>
+
+<% @instructors.each do |instructor| %>
+<tr>
+  <td><%= instructor.first_name %></td>
+  <td><%= instructor.last_name %></td>
+  <td><%= instructor.age %></td>
+  <td><%= instructor.education %></td>
+  <td><%= instructor.salary %></td>
+  <td><%= link_to 'Show', instructor_path(instructor) %></td>
+  <td><%= link_to 'Edit', edit_instructor_path(instructor) %></td>
+  <td><%= link_to 'Delete', instructor_path(instructor), method: :delete,
+  data: { confirm: 'are you sure?'} %></td>
+
+
+</tr>
+<% end %>
+</table>

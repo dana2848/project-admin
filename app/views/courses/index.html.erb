@@ -1,0 +1,21 @@
+<h1>Courses#index</h1>
+<%= link_to 'add new course', new_course_path %>
+<table>
+<tr>
+  <th>Course name</th>
+  <th>Total hours</th>
+</tr>
+
+<% @courses.each do |course| %>
+<tr>
+  <td><%= course.coursename %></td>
+  <td><%= course.totalhours %></td>
+  <td><%= link_to 'Show', course_path(course) %></td>
+  <td><%= link_to 'Edit', edit_course_path(course) %></td>
+  <td><%= link_to 'Delete', course_path(course), method: :delete,
+  data: { confirm: 'are you sure?'} %></td>
+
+
+</tr>
+<% end %>
+</table>

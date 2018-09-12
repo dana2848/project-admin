@@ -1,0 +1,55 @@
+<%= link_to 'Back', cohorts_path %>
+
+<p>
+  <strong>cohort name:</strong>
+  <%= @cohort.cohort_name %>
+</p>
+
+<p>
+  <strong>start date:</strong>
+  <%= @cohort.start_date %>
+</p>
+
+<p>
+  <strong>end date:</strong>
+  <%= @cohort.end_date %>
+</p>
+
+<p>
+  <strong>course name:</strong>
+  <%= @cohort.course.coursename if @cohort.course %>
+</p>
+
+<p>
+  <strong>instructor:</strong>
+  <%= @cohort.instructor.full_name if @cohort.instructor%>
+  <br>
+</p>
+
+<strong>student:</strong>
+<% if @cohort.students %>
+  <% @cohort.students.uniq.each do |z| %>
+    <%= z.full_name %><br><% end %><br>
+<% end %>
+</p>
+
+<h2>add instructor</h2>
+<%= form_for @cohort do |f| %>
+<%= f.collection_select(:instructor_id, Instructor.all, :id, :full_name) %>
+<%= f.submit %>
+<% end %>
+
+<h2>add course</h2>
+<%= form_for @cohort do |f| %>
+<%= f.collection_select(:course_id, Course.all, :id, :coursename) %>
+<%= f.submit %>
+<% end %>
+
+
+<p>
+
+
+<h2>add student</h2>
+<%= form_tag({controller: :cohorts, action: :update}, method: :get) %>
+<%= collection_select(:q, :student_ids, Student.all, :id, :full_name) %>
+<%= submit_tag ('submit') %>
