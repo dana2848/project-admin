@@ -1,5 +1,9 @@
-<%= link_to 'Back', cohorts_path %>
+<%= render  'layouts/header' %>
 
+<%= link_to 'Back', cohorts_path %>
+<%= link_to 'terminate', cohort_path,
+method: :delete, data: {confirm: 'are you sure', remote: true},
+class: 'terminate' %>
 <p>
   <strong>cohort name:</strong>
   <%= @cohort.cohort_name %>

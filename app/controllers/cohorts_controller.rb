@@ -8,9 +8,7 @@ class CohortsController < ApplicationController
     @cohorts = Cohort.all
   end
 
-  def edit
-    @cohort = Cohort.find(params[:id])
-  end
+
 
   def create
     @cohort = Cohort.new(cohort_params)
@@ -29,8 +27,13 @@ class CohortsController < ApplicationController
   def destroy
     @cohort = Cohort.find(params[:id])
     @cohort.destroy
-    redirect_to cohorts_path
-end
+    respond_to do |format|
+    format.js {render :layout => false}
+    format.html {p 'html response';
+    redirect_to root_path }
+    end
+  end
+
 
 def update
   @cohort = Cohort.find(params[:id])

@@ -34,7 +34,7 @@ class InstructorsController < ApplicationController
   end
 
   def destroy
-    @instructor = Instructor.find(parmas[:id])
+    @instructor = Instructor.find(params[:id])
     @instructor.destroy
     redirect_to instructors_path
   end

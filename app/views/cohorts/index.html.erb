@@ -1,3 +1,5 @@
+<%= render  'layouts/header' %>
+
 <h1>Cohorts#index</h1>
 <%= link_to 'add new cohort', new_cohort_path %>
 <table>
@@ -19,11 +21,12 @@
   <td><%= cohort.course.coursename if cohort.course %></td>
 
 
+  <td><%= link_to cohort, method: :delete, data: { confirm: 'Are you certain? This action is irreversible' }, :remote => true, :class => 'delete_cohort' do %>
+   DELETE
+   <% end %></td>
 
   <td><%= link_to 'Show', cohort_path(cohort) %></td>
   <td><%= link_to 'Edit', edit_cohort_path(cohort) %></td>
-  <td><%= link_to 'Delete', cohort_path(cohort), method: :delete,
-  data: { confirm: 'are you sure?'} %></td>
 
 
 </tr>

@@ -7,14 +7,22 @@ Rails.application.routes.draw do
   get 'users/destroy'
   get 'sessions/new'
   resources :students
-  resources :courses
+  resources :courses do
+  resources :cohorts
+end
+
   resources :instructors
   resources :cohorts
+  resources :welcome
+
+  delete 'terminate' => 'cohorts#destroy'
   resources :users
   # resources :sessions
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
+  get 'logout' => 'sessions#destroy'
+
 
   root 'welcome#index'
 
